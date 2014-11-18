@@ -1,0 +1,42 @@
+#include "ArcApp.h"
+#include "Moose.h"
+#include "AppFactory.h"
+
+template<>
+InputParameters validParams<ArcApp>()
+{
+  InputParameters params = validParams<MooseApp>();
+  return params;
+}
+
+ArcApp::ArcApp(const std::string & name, InputParameters parameters) :
+    MooseApp(name, parameters)
+{
+  srand(processor_id());
+
+  Moose::registerObjects(_factory);
+  ArcApp::registerObjects(_factory);
+
+  Moose::associateSyntax(_syntax, _action_factory);
+  ArcApp::associateSyntax(_syntax, _action_factory);
+}
+
+ArcApp::~ArcApp()
+{
+}
+
+void
+ArcApp::registerApps()
+{
+  registerApp(ArcApp);
+}
+
+void
+ArcApp::registerObjects(Factory & factory)
+{
+}
+
+void
+ArcApp::associateSyntax(Syntax & syntax, ActionFactory & action_factory)
+{
+}
