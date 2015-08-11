@@ -11,7 +11,7 @@ InputParameters validParams<ArcApp>();
 class ArcApp : public MooseApp
 {
 public:
-  ArcApp(const std::string & name, InputParameters parameters);
+  ArcApp(InputParameters parameters);
   virtual ~ArcApp();
 
   static void registerApps();
