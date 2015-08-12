@@ -10,10 +10,9 @@ InputParameters validParams<ArcApp>()
   return params;
 }
 
-ArcApp::ArcApp(const std::string & name, InputParameters parameters) :
-    MooseApp(name, parameters)
+ArcApp::ArcApp(InputParameters parameters) :
+    MooseApp(parameters)
 {
-  srand(processor_id());
 
   Moose::registerObjects(_factory);
   ModulesApp::registerObjects(_factory);
